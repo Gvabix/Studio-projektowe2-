@@ -1,5 +1,6 @@
 # Studio-projektowe2
-RST: https://github.com/jiyfeng/DPLP
+[RST github link](https://github.com/jiyfeng/DPLP)
+[Link do artykułu](https://arxiv.org/abs/1903.09196)
 # Pierwsze kroki
 Skoro funkcja **RST** jest już zaimplementowana i pobrana z GitHuba, możemy skupić się na wstępnych krokach organizacji projektu oraz jego strukturze.  
 
