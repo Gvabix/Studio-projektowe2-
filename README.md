@@ -7,8 +7,6 @@
 
 # Pierwsze kroki
 
-# ** Początkowe kroki**  
-
 ## **1️⃣ Utworzenie repozytorium i środowiska pracy**  
 - [ ] Stwórz repozytorium na **GitHub/GitLab** dla całego zespołu.  
 - [ ] Skonfiguruj wirtualne środowisko **(Python venv/conda)** do pracy nad projektem.  
