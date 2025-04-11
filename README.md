@@ -1,107 +1,56 @@
-# Studio-projektowe2
-[RST github link](https://github.com/jiyfeng/DPLP)
+# Fake News Classification using Graph Neural Networks
 
+## Description
 
-[Link do artykułu](https://arxiv.org/abs/1903.09196)
+This project compares the performance of the **HPNF (Hierarchical Propagation Neural Network)** model with the **RST** model, as described in [this paper](https://arxiv.org/abs/1903.09196). The goal is to classify **fake** vs **real** news articles using **graph-based methods**. The dataset consists of both **graph data** (from [Fake News Propagation](https://github.com/mdepak/fake-news-propagation)) and **textual data** (from [Fakenews-dataset](https://github.com/mbzuai-nlp/Fakenews-dataset)).
 
+- **HPNF** is a hierarchical graph neural network that propagates information in a hierarchical manner for more efficient graph-based classification tasks.
+- **DPLP** (available [here](https://github.com/jiyfeng/DPLP)) is a reference model for comparison, which analyzes rhetorical structures (RST) in news articles and uses these structures for fake news classification.
 
-# Pierwsze kroki
+## Data
 
-## **1️⃣ Utworzenie repozytorium i środowiska pracy**  
-- [ ] Stwórz repozytorium na **GitHub/GitLab** dla całego zespołu.  
-- [ ] Skonfiguruj wirtualne środowisko **(Python venv/conda)** do pracy nad projektem.  
-- [ ] Zainstaluj wymagane biblioteki (**numpy, pandas, sklearn, networkx, nltk, torch, transformers itp.**).  
-- [ ]  Pobierz i umieść kod **RST** w repozytorium, sprawdzając jego działanie na przykładowych danych.  
+- **Graph data**: This includes relationships between tweets (nodes) and replies (edges). The `prepare_graph_data.py` script processes this raw data and converts it into graph format for use in the model.
+- **Text data**: The textual content of news articles is used for classification and analysis.
+
+## How it works
+
+1. **Graph Data Processing**: The `prepare_graph_data.py` script processes raw JSON data, creating graphs where nodes represent tweets and edges represent replies. These graphs are then used as input for the HPNF model.
+2. **Model Training**: The `train_hpnf.py` script trains the **HPNF** model on the processed graph data, performing the task of fake news classification.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Gvabix/Studio-projektowe2-.git
+   ```
+
+2. Optionally, create a virtual environment:
+
+   ```bash
+   python -m venv venv
+   # On Windows
+   .\venv\Scripts\activate
+   # On macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. Install required dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Training
+
+To train the model, run the following command:
 
 ```bash
-git clone <repo_url>
-cd project_name
-python -m venv venv
-source venv/bin/activate  # (Windows: venv\Scripts\activate)
-pip install -r requirements.txt
+python models/train_hpnf.py
 ```
 
----
+This will:
+- Load and preprocess the dataset.
+- Train the **HPNF** model for fake news classification.
+- Save the trained model to `checkpoints/hpnf.pt`.
 
-## **2️⃣ Struktura katalogów i plików**  
-
-```
-/fake_news_detection_project
-│── data/                  # Folder na dane wejściowe i przetworzone
-│   ├── raw/               # Surowe dane (FakeNewsNet)
-│   ├── processed/         # Wstępnie przetworzone dane
-│
-│── models/                # Folder na modele ML/NLP
-│   ├── rst_model.py       # Kod RST z GitHuba
-│   ├── hpnf_model.py      # Implementacja HPNF
-│   ├── combined_model.py  # Połączenie RST + HPNF
-│
-│── notebooks/             # Eksploracja danych i testy modeli
-│   ├── data_analysis.ipynb
-│   ├── model_evaluation.ipynb
-│
-│── scripts/               # Skrypty do obróbki i analizy danych
-│   ├── preprocess_data.py # Czyszczenie i przygotowanie danych
-│   ├── train_model.py     # Trenowanie modeli
-│   ├── evaluate_model.py  # Ewaluacja wyników
-│
-│── reports/               # Raporty i wyniki
-│   ├── progress_report.md
-│   ├── final_report.md
-│
-│── main.py                # Główna logika aplikacji
-│── requirements.txt        # Lista wymaganych bibliotek
-│── README.md               # Opis projektu i instrukcje
-```
-
----
-
-## **3️⃣ Przygotowanie i analiza danych**  
-- [ ] Pobierz zbiór **FakeNewsNet** i umieść go w folderze `/data/raw/`.  
-- [ ] Stwórz skrypt `preprocess_data.py`, który oczyści i przygotuje dane do analizy.  
-- [ ] Sprawdź, czy format danych jest zgodny z wejściem wymaganym przez RST.
-- [ ] Przetestuj działanie RST na próbce danych.  
-
----
-
-## **4️⃣ Implementacja metody HPNF**  
-- [ ] Stwórz plik `hpnf_model.py` i zaimplementuj analizę propagacji fake newsów.  
-- [ ] Użyj biblioteki **networkx** do tworzenia sieci retweetów i komentarzy.
-- [ ] Wygeneruj wskaźniki propagacji (np. głębokość drzewa, czas reakcji użytkowników).
-
-### Implementacja HPNF
-
-#### **1. Wstępne przygotowanie danych**
-   - Zbierz i przygotuj dane wejściowe do modelu.
-   - Przekształć dane do postaci odpowiedniej dla modelu (np. normalizacja, tokenizacja, transformacja do tensorów).
-   - Podziel dane na zbiór treningowy, walidacyjny i testowy.
-
-#### **2. Definicja architektury HPNF**
-   - **Wejście**: Punktowe wartości danych w formie sekwencji.
-   - **Hierarchiczne warstwy**:
-     - Warstwy filtrujące pierwszego rzędu przekształcające surowe dane na bardziej reprezentatywne cechy.
-     - Warstwy agregujące łączące informacje z poprzednich poziomów.
-   - **Mechanizm uwagi** (attention mechanism) do przetwarzania zależności w danych sekwencyjnych.
-   - **Moduł wyjściowy**: Finalna warstwa w pełni połączona (fully connected) lub warstwa konwolucyjna, w zależności od typu zadania.
-
-#### **3. Trenowanie modelu**
-   - Wybór funkcji straty (np. błąd średniokwadratowy MSE dla regresji).
-   - Wybór optymalizatora (np. Adam, SGD).
-   - Wykorzystanie mini-batch gradient descent do aktualizacji wag.
-   - Regularizacja (dropout, L2-norm) dla poprawy generalizacji.
-
-#### **4. Ewaluacja i optymalizacja**
-   - Przeprowadzenie testów na zbiorze walidacyjnym.
-   - Modyfikacja hiperparametrów (np. liczba warstw, wielkość batcha, stopa uczenia).
-   - Analiza wyników modelu przy użyciu metryk (np. RMSE, MAE, F1-score).
-
-#### **5. Wdrożenie modelu**
-   - Optymalizacja obliczeniowa dla wydajności (pruning, quantization).
-   - Eksport modelu w wybranym formacie (np. ONNX, TensorFlow SavedModel).
-   - Integracja z systemem produkcyjnym.
----
-
-## **5️⃣ Integracja RST + HPNF**  
-- [ ] Stwórz plik `combined_model.py`, łącząc wyniki z RST i HPNF.
-- [ ] Przetestuj, czy połączenie metod zwiększa skuteczność detekcji fake newsów.
-- [ ] Przygotuj eksperymenty porównujące skuteczność RST, HPNF i ich połączenia.  

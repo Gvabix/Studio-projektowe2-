@@ -1,0 +1,37 @@
+# PyCharm
+.idea/
+
+# Python bytecode
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.pytest_cache/
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Pytest
+*.cover
+*.coverage
+*.hypothesis/
+
+# VS Code settings
+.vscode/
+
+# system files
+.DS_Store
+Thumbs.db
+
+# Cache files
+*.log
+*.out
+*.err
+
