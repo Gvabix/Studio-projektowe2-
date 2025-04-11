@@ -25,7 +25,13 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    git clone https://github.com/Gvabix/Studio-projektowe2-.git
    ```
 
-2. Optionally, create a virtual environment:
+2. **Prepare the Graph Data**:
+   
+   Before training, you need to preprocess the graph data. The dataset for graphs is stored as a **ZIP file** in the repository, so you will need to unzip it first.
+
+   - Unzip the `graphs.zip` file into a folder named `graphs/` in the data directory.
+
+3. **Optionally, create a virtual environment**:
 
    ```bash
    python -m venv venv
@@ -35,22 +41,33 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    source venv/bin/activate
    ```
 
-3. Install required dependencies:
+4. **Install required dependencies**:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-## Training
+5. **Run the Graph Data Preparation**:
 
-To train the model, run the following command:
+   Before training the model, you need to process the graph data using the `prepare_graph_data.py` script:
 
-```bash
-python models/train_hpnf.py
-```
+   ```bash
+   python datasets/prepare_graph_data.py
+   ```
+
+   This will preprocess the raw graph data into the format required for the model.
+
+6. **Train the Model**:
+
+   After preparing the data, you can train the model by running:
+
+   ```bash
+   python models/train_hpnf.py
+   ```
 
 This will:
 - Load and preprocess the dataset.
 - Train the **HPNF** model for fake news classification.
 - Save the trained model to `checkpoints/hpnf.pt`.
+
 
