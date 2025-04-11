@@ -71,3 +71,7 @@ This will:
 - Save the trained model to `checkpoints/hpnf.pt`.
 
 
+## References/Citation
+@article{shu2019hierarchical, title={Hierarchical propagation networks for fake news detection: Investigation and exploitation}, author={Shu, Kai and Mahudeswaran, Deepak and Wang, Suhang and Liu, Huan}, journal={arXiv preprint arXiv:1903.09196}, year={2019} }
+
+@article{shu2018fakenewsnet, title={FakeNewsNet: A Data Repository with News Content, Social Context and Dynamic Information for Studying Fake News on Social Media}, author={Shu, Kai and  Mahudeswaran, Deepak and Wang, Suhang and Lee, Dongwon and Liu, Huan}, journal={arXiv preprint arXiv:1809.01286}, year={2018} }
