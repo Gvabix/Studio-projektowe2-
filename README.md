@@ -70,6 +70,7 @@ This will:
 - Train the **HPNF** model for fake news classification.
 - Save the trained model to `checkpoints/hpnf.pt`.
 
+---
 
 ## References/Citation
 @article{shu2019hierarchical, title={Hierarchical propagation networks for fake news detection: Investigation and exploitation}, author={Shu, Kai and Mahudeswaran, Deepak and Wang, Suhang and Liu, Huan}, journal={arXiv preprint arXiv:1903.09196}, year={2019} }
