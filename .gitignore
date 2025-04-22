@@ -35,3 +35,5 @@ Thumbs.db
 *.out
 *.err
 
+# Ignore the data directory
+data/

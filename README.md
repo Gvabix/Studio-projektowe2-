@@ -26,7 +26,7 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    ```
 
 2. **Prepare the Graph Data**:
-   
+
    Before training, you need to preprocess the graph data. The dataset for graphs is stored as a **ZIP file** in the repository, so you will need to unzip it first.
 
    - Unzip the `graphs.zip` file into a folder named `graphs/` in the data directory.
@@ -37,8 +37,7 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    python -m venv venv
    # On Windows
    .\venv\Scripts\activate
-   # On macOS/Linux
-   source venv/bin/activate
+   # On macOS/Linux =>  preferably create conda environment
    ```
 
 4. **Install required dependencies**:
@@ -66,13 +65,22 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    ```
 
 This will:
+
 - Load and preprocess the dataset.
 - Train the **HPNF** model for fake news classification.
 - Save the trained model to `checkpoints/hpnf.pt`.
 
+7. **Evaluate the model**
+   After running the model, you can evaluate the results by running:
+
+```bash
+python utils/evaluate.py
+```
+
 ---
 
 ## References/Citation
+
 @article{shu2019hierarchical, title={Hierarchical propagation networks for fake news detection: Investigation and exploitation}, author={Shu, Kai and Mahudeswaran, Deepak and Wang, Suhang and Liu, Huan}, journal={arXiv preprint arXiv:1903.09196}, year={2019} }
 
-@article{shu2018fakenewsnet, title={FakeNewsNet: A Data Repository with News Content, Social Context and Dynamic Information for Studying Fake News on Social Media}, author={Shu, Kai and  Mahudeswaran, Deepak and Wang, Suhang and Lee, Dongwon and Liu, Huan}, journal={arXiv preprint arXiv:1809.01286}, year={2018} }
+@article{shu2018fakenewsnet, title={FakeNewsNet: A Data Repository with News Content, Social Context and Dynamic Information for Studying Fake News on Social Media}, author={Shu, Kai and Mahudeswaran, Deepak and Wang, Suhang and Lee, Dongwon and Liu, Huan}, journal={arXiv preprint arXiv:1809.01286}, year={2018} }
