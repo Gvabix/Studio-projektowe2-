@@ -3,7 +3,7 @@ import torch
 from torch_geometric.loader import DataLoader
 from sklearn.metrics import accuracy_score, f1_score
 from datasets.graph_dataset import GraphDataset
-from models.hpnf import HPNF
+from models.hpnf.hpnf import HPNF
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.optim import Adam
@@ -55,7 +55,7 @@ def test(model, loader):
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Dataset
-dataset = GraphDataset(root='../data')
+dataset = GraphDataset(root='../../data')
 dataset = dataset.shuffle()
 split_idx = int(0.8 * len(dataset))
 train_dataset = dataset[:split_idx]

@@ -61,7 +61,7 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    After preparing the data, you can train the model by running:
 
    ```bash
-   python models/train_hpnf.py
+   python models/train_hpnf_old.py
    ```
 
 This will:
