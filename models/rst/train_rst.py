@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 
 
-df = pd.read_pickle('../../data/parsed_files/dataset.pkl')
+df = pd.read_pickle('../../data/rst_dataset.pkl')
 X = df.drop(columns=['label'])
 y = df['label']
 
