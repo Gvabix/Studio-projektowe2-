@@ -11,15 +11,15 @@ import numpy as np
 # === Ścieżki ===
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RESULTS_DIR = os.path.join(BASE_DIR, "results", "hpnf")
-CHECKPOINT_PATH = os.path.join(BASE_DIR, "models", "checkpoints", "hpnf.pt")
+CHECKPOINT_PATH = os.path.join(BASE_DIR, "models", "hpnf", "checkpoints", "hpnf.pt")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # === Urządzenie ===
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # === Importy lokalne ===
-sys.path.append(BASE_DIR)
-from models.hpnf import HPNF
+sys.path.insert(0, BASE_DIR)
+from models.hpnf.hpnf import HPNF
 from datasets.graph_dataset import GraphDataset
 
 
