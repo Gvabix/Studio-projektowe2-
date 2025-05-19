@@ -30,6 +30,11 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    Before training, you need to preprocess the graph data. The dataset for graphs is stored as a **ZIP file** in the repository, so you will need to unzip it first.
 
    - Unzip the `graphs.zip` file into a folder named `graphs/` in the data directory.
+   - You can do it by running the script:
+     
+      ```bash
+      python datasets/unzip_files.py
+      ```
 
 3. **Optionally, create a virtual environment**:
 
@@ -54,9 +59,9 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    python datasets/prepare_graph_data.py
    ```
 
-   This will preprocess the raw graph data into the format required for the model.
+   This will preprocess the raw graph data into the format required for the model (it may take up to few minutes).
 
-6. **Train the Model**:
+6. **Train the HPNF Model**:
 
    After preparing the data, you can train the model by running:
 
@@ -64,19 +69,19 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    python models/hpnf/train_hpnf.py
    ```
 
-This will:
-
-- Load and preprocess the dataset.
-- Train the **HPNF** model for fake news classification.
-- Save the trained model to `models/hpnf/checkpoints/hpnf.pt`.
+   This will:
+   
+   - Load and preprocess the dataset.
+   - Train the **HPNF** model for fake news classification.
+   - Save the trained model to `models/hpnf/checkpoints/hpnf.pt`.
 
 7. **Evaluate the model**
    After running the model, you can evaluate the results by running:
 
-```bash
-python utils/evaluate_hpnf.py
-```
-> All results will be saved to `results/hpnf/`
+   ```bash
+   python utils/evaluate_hpnf.py
+   ```
+   > All results will be saved to `results/hpnf/`
    
 ---
 
