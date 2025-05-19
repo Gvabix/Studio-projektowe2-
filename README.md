@@ -61,22 +61,23 @@ This project compares the performance of the **HPNF (Hierarchical Propagation Ne
    After preparing the data, you can train the model by running:
 
    ```bash
-   python models/train_hpnf_old.py
+   python models/hpnf/train_hpnf.py
    ```
 
 This will:
 
 - Load and preprocess the dataset.
 - Train the **HPNF** model for fake news classification.
-- Save the trained model to `checkpoints/hpnf.pt`.
+- Save the trained model to `models/hpnf/checkpoints/hpnf.pt`.
 
 7. **Evaluate the model**
    After running the model, you can evaluate the results by running:
 
 ```bash
-python utils/evaluate.py
+python utils/evaluate_hpnf.py
 ```
-
+> All results will be saved to `results/hpnf/`
+   
 ---
 
 ## References/Citation
